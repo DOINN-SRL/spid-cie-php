@@ -359,7 +359,7 @@ $config = array(
      * through https. If the user can access the service through
      * both http and https, this must be set to FALSE.
      */
-    'session.cookie.secure' => FALSE,
+    'session.cookie.secure' => TRUE,
 
     'session.cookie.samesite' => 'None',
 

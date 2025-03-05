@@ -21,7 +21,7 @@ services:
             context: .
             dockerfile: docker/Dockerfile-nginx
         ports:
-            - "8020:80"
+            - "8020:443"
         networks:
             - spid-cie-php-network
         restart: unless-stopped
