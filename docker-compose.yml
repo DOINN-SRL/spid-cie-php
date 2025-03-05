@@ -1,0 +1,31 @@
+name: spid-cie-php
+
+networks:
+    spid-cie-php-network:
+        driver: bridge
+
+services:
+    php:
+        build:
+            context: .
+            dockerfile: docker/Dockerfile-php
+        networks:
+            - spid-cie-php-network
+        restart: unless-stopped
+        volumes:
+            - .:/spid-cie-php
+            - ./public:/var/www
+
+    nginx:
+        build:
+            context: .
+            dockerfile: docker/Dockerfile-nginx
+        ports:
+            - "8020:80"
+        networks:
+            - spid-cie-php-network
+        restart: unless-stopped
+        volumes:
+            - .:/spid-cie-php
+            - ./public:/var/www
+            - ./nginx:/etc/nginx/data
