@@ -8,7 +8,7 @@ $spidsdk = new PROXY_SPID_PHP('{{PROXY_CLIENT_ID}}', '{{PROXY_REDIRECT_URI}}', $
 
 //$spidsdk->setPurpose("P");
 
-$backendUrl = $spidsdk->getRedirectURI() . "-logout?" . http_build_query($_GET);
+$backendUrl = "{{PROXY_REDIRECT_URI}}" . "-logout?" . http_build_query($_GET);
 $logoutUrl = $spidsdk->getLogoutURL($backendUrl);
 echo $logoutUrl;
 echo "<br>";
