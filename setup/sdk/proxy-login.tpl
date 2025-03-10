@@ -36,7 +36,13 @@
             }
             
         } else {
-            $spidsdk->login($_GET['idp'], 2);  
+            $currentBaseUrl = "https://".$_SERVER['HTTP_HOST'];
+            $proxyUrl = $currentBaseUrl . "/proxy.php?client_id=" . $spidsdk->getClientId() . "&action=login&redirect_uri=" . $spidsdk->getRedirectURI() . "&idp=" . $_GET['idp'] . "&state=" . $spidsdk->getState();
+            header("Location: " . $proxyUrl);
+            exit;
+
+            //OLD
+            // $spidsdk->login($_GET['idp'], 2);  
 
             // set AttributeConsumingServiceIndex 2
             //$spidsdk->login($_GET['idp'], 2, "", 2);

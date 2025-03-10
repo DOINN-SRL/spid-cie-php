@@ -114,6 +114,18 @@ class PROXY_SPID_PHP extends SPID_PHP {
 		</div>
 	    ";    
 	}
+
+    public function getClientId() {
+        return $this->client_id;
+    }
+
+    public function getRedirectURI() {
+        return $this->redirect_uri;
+    }
+
+    public function getState() {
+        return $this->state;
+    }
 }
 
 ?>
