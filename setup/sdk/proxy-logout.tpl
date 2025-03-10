@@ -8,12 +8,16 @@ $spidsdk = new PROXY_SPID_PHP('{{PROXY_CLIENT_ID}}', '{{PROXY_REDIRECT_URI}}', $
 
 //$spidsdk->setPurpose("P");
 
-$logoutUrl = $spidsdk->getLogoutURL($spidsdk->getRedirectURI() . "-logout?" . http_build_query($_GET));
+$backendUrl = $spidsdk->getRedirectURI() . "-logout?" . http_build_query($_GET);
+$logoutUrl = $spidsdk->getLogoutURL($backendUrl);
 echo $logoutUrl;
+echo "<br>";
+echo $backendUrl;
+
 if ($spidsdk->isAuthenticated()) {
-    // header("Location: " . $logoutUrl);
-    // exit;
     $spidsdk->logout($logoutUrl);
+    header("Location: " . $backendUrl);
+    exit;
 } else {
     echo "<p>Not authenticated</p>";
 }
