@@ -15,7 +15,7 @@ echo "<br>";
 echo $backendUrl;
 
 if ($spidsdk->isAuthenticated()) {
-    $spidsdk->logout($logoutUrl);
+    $spidsdk->logout();
     header("Location: " . $backendUrl);
     exit;
 } else {
