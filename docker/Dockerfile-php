@@ -9,6 +9,7 @@ RUN apk add php-session \
     php-curl \
     php-dom \
     php-fileinfo \
+    php-pgsql \
     php-mbstring \
     php-openssl \
     php-session \
