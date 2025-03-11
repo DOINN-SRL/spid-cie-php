@@ -1048,7 +1048,7 @@ class Setup {
         );
 
         //merge env to vars
-        foreach ($config['env'] as $key => $value) {
+        foreach ($envData as $key => $value) {
             $vars["{{" . strtoupper($key) . "}}"] = "'" . $value . "'";
         }
 
