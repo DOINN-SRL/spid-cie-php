@@ -1048,7 +1048,9 @@ class Setup {
         );
 
         //merge env to vars
-        $vars = array_merge($vars, $envData);
+        foreach ($config['env'] as $key => $value) {
+            $vars["{{" . strtoupper($key) . "}}"] = "'" . $value . "'";
+        }
 
         $template = file_get_contents($config['installDir'] . '/setup/config/config.tpl', true);
         $customized = str_replace(array_keys($vars), $vars, $template);

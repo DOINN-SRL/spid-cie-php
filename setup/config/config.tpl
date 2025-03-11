@@ -701,7 +701,7 @@ $config = array(
      *
      * (This option replaces the old 'session.handler'-option.)
      */
-    'store.type'                    => '{{STORE_TYPE}}',
+    'store.type'                    => {{STORE_TYPE}},
 
     /*
      * The DSN the sql datastore should connect to.
@@ -709,7 +709,7 @@ $config = array(
      * See http://www.php.net/manual/en/pdo.drivers.php for the various
      * syntaxes.
      */
-    'store.sql.dsn'                 => '{{STORE_SQL_DSN}}',
+    'store.sql.dsn'                 => {{STORE_SQL_DSN}},
 
     /*
      * The username and password to use when connecting to the database.
