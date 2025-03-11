@@ -55,7 +55,7 @@ $config = array(
      * When errorreporting is enabled, a form will be presented for the user to report
      * the error to technicalcontact_email.
      */
-    'showerrors' => true,
+    'showerrors' => false,
     'errorreporting' => true,
 
     /**
