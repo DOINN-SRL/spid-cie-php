@@ -3,6 +3,7 @@ name: spid-cie-php
 networks:
     spid-cie-php-network:
         driver: bridge
+        external: true
 
 services:
     php:
