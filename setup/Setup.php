@@ -78,6 +78,8 @@ class Setup {
 
         $config = file_exists("spid-php-setup.json") ?
                 json_decode(file_get_contents("spid-php-setup.json"), true) : array();
+            
+        $envData = self::readEnvFile('.env');
 
         $config['production'] = false;
 
@@ -1044,6 +1046,10 @@ class Setup {
             "{{SLOCUSTOMLOCATION}}" => "'" . $config['sloCustomLocation'] . "'",
             "{{SP_DOMAIN}}" => "'." . $config['spDomain'] . "'"
         );
+
+        //merge env to vars
+        $vars = array_merge($vars, $envData);
+
         $template = file_get_contents($config['installDir'] . '/setup/config/config.tpl', true);
         $customized = str_replace(array_keys($vars), $vars, $template);
         file_put_contents($config['installDir'] .
@@ -1772,6 +1778,30 @@ class Setup {
         
         file_put_contents("spid-php-proxy.json", json_encode($proxy_config));
 
+    }
+
+    public static function readEnvFile($filePath) {
+        $data = [];
+        if (file_exists($filePath)) {
+            // Legge ogni riga del file, ignorando le righe vuote
+            $lines = file($filePath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+            foreach ($lines as $line) {
+                // Salta le righe che iniziano con il carattere di commento
+                if (strpos(trim($line), '#') === 0) {
+                    continue;
+                }
+                // Divide la riga in chiave e valore (al primo "=")
+                $parts = explode('=', $line, 2);
+                if (count($parts) == 2) {
+                    $key = trim($parts[0]);
+                    $value = trim($parts[1]);
+                    // Rimuove eventuali virgolette dal valore
+                    $value = trim($value, "\"'");
+                    $data[$key] = $value;
+                }
+            }
+        }
+        return $data;
     }
 
 }

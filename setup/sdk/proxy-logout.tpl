@@ -10,11 +10,9 @@ $spidsdk = new PROXY_SPID_PHP('{{PROXY_CLIENT_ID}}', '{{PROXY_REDIRECT_URI}}', $
 
 $backendUrl = "{{PROXY_REDIRECT_URI}}" . "-logout?" . http_build_query($_GET);
 $logoutUrl = $spidsdk->getLogoutURL($backendUrl);
-echo $logoutUrl;
-echo "<br>";
-echo $backendUrl;
 
 if ($spidsdk->isAuthenticated()) {
+    echo "<p>Authenticated</p>";
     $spidsdk->logout();
     header("Location: " . $backendUrl);
     exit;
