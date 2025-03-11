@@ -1277,12 +1277,11 @@ class Setup {
                 file_put_contents($config['wwwDir'] . "/proxy-home.php", $customized);
             }
 
-            if (!file_exists($config['wwwDir'] . "/error.php")) {
-                // add error.tpl only if not exists
-		        $template = file_get_contents($config['installDir'] . '/setup/sdk/error.tpl', true);
-		        $customized = str_replace(array_keys($vars), $vars, $template);
-		        file_put_contents($config['wwwDir'] . "/error.php", $customized);
-            }
+       
+            $template = file_get_contents($config['installDir'] . '/setup/sdk/error.tpl', true);
+            $customized = str_replace(array_keys($vars), $vars, $template);
+            file_put_contents($config['wwwDir'] . "/error.php", $customized);
+        
 
             $filesystem->mirror(
                 $config['installDir'] . "/setup/www/assets",
