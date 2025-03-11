@@ -1250,7 +1250,7 @@ class Setup {
 
         // write proxy example files
         if ($config['addProxyExample']) {
-            echo $colors->getColoredString("\nWrite proxy example files to www (proxy.php, proxy-home.php, proxy-sample.php, proxy-login.php, proxy-logout.php, error.php)... ", "white");
+            echo $colors->getColoredString("\nWrite proxy example files to www (proxy.php, proxy-home.php, proxy-sample.php, proxy-login.php, error.php)... ", "white");
 
             // configuration for proxy
             $vars = self::proxyVariables($config);
@@ -1270,10 +1270,6 @@ class Setup {
             $template = file_get_contents($config['installDir'] . '/setup/sdk/proxy-login.tpl', true);
             $customized = str_replace(array_keys($vars), $vars, $template);
             file_put_contents($config['wwwDir'] . "/proxy-login.php", $customized);
-
-            $template = file_get_contents($config['installDir'] . '/setup/sdk/proxy-logout.tpl', true);
-            $customized = str_replace(array_keys($vars), $vars, $template);
-            file_put_contents($config['wwwDir'] . "/proxy-logout.php", $customized);
 
             if (!file_exists($config['wwwDir'] . "/proxy-home.php")) {
                 $template = file_get_contents($config['installDir'] . '/setup/sdk/proxy-home.tpl', true);
@@ -1332,7 +1328,6 @@ class Setup {
             $filesystem->chmod($config['wwwDir'] . "/proxy.php", 0644);
             $filesystem->chmod($config['wwwDir'] . "/proxy-sample.php", 0644);
             $filesystem->chmod($config['wwwDir'] . "/proxy-login.php", 0644);
-            $filesystem->chmod($config['wwwDir'] . "/proxy-logout.php", 0644);
             $filesystem->chmod($config['wwwDir'] . "/error.php", 0644);
         }
         echo $colors->getColoredString("OK", "green");
