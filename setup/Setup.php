@@ -1248,6 +1248,13 @@ class Setup {
             echo $colors->getColoredString("OK", "green");
         }
 
+         //spid.php e spid-error.php
+         $content = file_get_contents($config['installDir'] . '/setup/sdk/spid.php', true);
+         file_put_contents($config['wwwDir'] . "/spid.php", $content);
+
+         $content = file_get_contents($config['installDir'] . '/setup/sdk/spid-error.php', true);
+         file_put_contents($config['wwwDir'] . "/spid-error.php", $content);
+
         // write proxy example files
         if ($config['addProxyExample']) {
             echo $colors->getColoredString("\nWrite proxy example files to www (proxy.php, proxy-home.php, proxy-sample.php, proxy-login.php, error.php)... ", "white");
@@ -1323,6 +1330,8 @@ class Setup {
         if ($config['addExamples']) {
             $filesystem->chmod($config['wwwDir'] . "/login.php", 0644);
         }
+        $filesystem->chmod($config['wwwDir'] . "/spid.php", 0644);
+        $filesystem->chmod($config['wwwDir'] . "/spid-error.php", 0644);
         if ($config['addProxyExample']) {
             $filesystem->chmod($config['wwwDir'] . "/proxy.php", 0644);
             $filesystem->chmod($config['wwwDir'] . "/proxy-sample.php", 0644);
