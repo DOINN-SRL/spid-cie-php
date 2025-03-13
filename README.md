@@ -57,4 +57,4 @@ Pertanto se si decide di cambiare percorso, fare attenzione e cambiare anche tut
 
 
 ### Redirect
-Rispetto al recirect POST definito dal parametro *redirect_uri* configurato nel file *spid-php-setup.json* è necessario creare sul proprio backend di riferimento anche l'endpoint GET *<redirect_uri>-error*, utilizzato durante i casi di errore.
+Rispetto al recirect POST definito dal parametro *redirect_uri* configurato nel file *spid-php-setup.json* è necessario creare sul proprio backend di riferimento anche l'endpoint POST *<redirect_uri>-error*, utilizzato durante i casi di errore.
