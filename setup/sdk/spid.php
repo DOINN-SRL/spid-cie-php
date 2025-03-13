@@ -8,7 +8,7 @@
 <body>
     <h1> Autenticazione eseguita con successo </h1>
     <div style="border: 1px solid #eee; padding: 1em; margin: 1em 0">
-        <p style="margin: 1px">Token: <?php echo htmlspecialchars($_GET['access_token']); ?></p>
+        <p style="margin: 1px">Token Utente: <?php echo htmlspecialchars($_GET['access_token']); ?></p>
     </div>
 </body>
 

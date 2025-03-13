@@ -4,6 +4,6 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     die();
 }
 
-$redirectErrorUri = '{{PROXY_REDIRECT_URI}}' . '-error';
-header("Location: " . $redirectErrorUri);
+$redirectErrorUri = 'https://api.welfaregranda.it/api/user/spid-auth-callback' . '-error';
+header("Location: " . $redirectErrorUri . "?saml_response=". urlencode($_POST['SAMLResponse']));
 exit;

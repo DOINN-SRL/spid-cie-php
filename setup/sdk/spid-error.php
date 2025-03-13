@@ -4,14 +4,17 @@
 
 <head>
 </head>
-
+<?php
+$errorMessage = $_GET['error_message'];
+$errorCode = $_GET['error_code'];
+$responseId = $_GET['response_id'];
+?>
 <body>
     <h1> Errore durante il processo di autenticazione </h1>
     <div style="border: 1px solid #eee; padding: 1em; margin: 1em 0">
-        <p style="margin: 1px">Error: <?php echo htmlspecialchars($_GET['error']); ?></p>
-        <!-- <p style="margin: 1px">StatusCode: <?php //echo htmlspecialchars($_GET['statusCode']); ?></p>
-        <p style="margin: 1px">StatusMessage: <?php //echo htmlspecialchars($_GET['statusMessage']); ?></p>
-        <p style="margin: 1px">ErrorMessage: <?php //echo htmlspecialchars($_GET['errorMessage']); ?></p> -->
+        <p style="margin: 1px">Messaggio di Errore: <?php echo htmlspecialchars($errorMessage); ?></p>
+        <p style="margin: 1px">Codice di Errore: <?php echo htmlspecialchars($errorCode); ?></p>
+        <p style="margin: 1px">ID Risposta: <?php echo htmlspecialchars($responseId); ?></p>
     </div>
 </body>
 
