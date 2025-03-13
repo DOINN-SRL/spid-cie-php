@@ -15,12 +15,12 @@ $samlResponse = $_POST['SAMLResponse'];
 </head>
 <body onload="document.getElementById('redirectForm').submit();">
   <form id="redirectForm" action="<?php echo htmlspecialchars($redirectErrorUri); ?>" method="post">
-    <input type="hidden" name="SAMLResponse" value="<?php echo $samlResponse; ?>">
+    <input type="hidden" name="saml_response" value="<?php echo $samlResponse; ?>">
   </form>
   <noscript>
     <p>Se non vieni reindirizzato automaticamente, clicca sul pulsante sottostante:</p>
     <form action="<?php echo htmlspecialchars($redirectErrorUri); ?>" method="post">
-      <input type="hidden" name="SAMLResponse" value="<?php echo $samlResponse; ?>">
+      <input type="hidden" name="saml_response" value="<?php echo $samlResponse; ?>">
       <button type="submit">Continua</button>
     </form>
   </noscript>
