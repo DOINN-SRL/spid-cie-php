@@ -4,6 +4,10 @@
 ```bash
 docker network create spid-cie-php-network
 ```
+se invece si tratta di un ambiente di staging:
+```bash
+docker network create staging-spid-cie-php-network
+```
 
 ### Create .env file
 ```bash
@@ -13,7 +17,11 @@ Ed inserire il contenuto
 
 ### Build & Run with docker compose
 ```bash
-docker compose -d --build
+docker compose -f docker-compose.prod.yml -d --build
+```
+se invece si tratta di un ambiente di staging:
+```bash
+docker compose -f docker-compose.staging.yml -d --build
 ```
 
 ### Enter in the container
@@ -58,3 +66,8 @@ Pertanto se si decide di cambiare percorso, fare attenzione e cambiare anche tut
 
 ### Redirect
 Rispetto al recirect POST definito dal parametro *redirect_uri* configurato nel file *spid-php-setup.json* è necessario creare sul proprio backend di riferimento anche l'endpoint POST *<redirect_uri>-error*, utilizzato durante i casi di errore.
+
+
+### Deploy Multipli
+Per come sono strutturati attualmente i file di configurazione di docker e degli script di setup della libreria spid-cie-php, non è possibile runnare sia i container di prod che di staging dallo stesso progetto (ovvero dallo stessa cartella contenente il codice). È necessario fare un'altro git clone creando così un'altra cartella e lanciare nella prima il docker-compose.prod.yml e nella seconda il docker-compose.staging.yml.
+Se i due ambienti hanno endpoint di callback differenti (come probabilmente è), si avranno dunque due file di spid-php-setup.json differenti (e probabilmente due configurazioni diverse per la php-session dentro il file .env) 

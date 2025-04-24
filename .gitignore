@@ -17,3 +17,5 @@ metadata-signed.xml
 public
 nginx
 .env
+.env.staging
+.env.production

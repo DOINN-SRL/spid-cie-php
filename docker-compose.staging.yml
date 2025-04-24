@@ -1,0 +1,32 @@
+name: staging-spid-cie-php
+
+networks:
+    staging-spid-cie-php-network:
+        driver: bridge
+        external: true
+
+services:
+    php:
+        build:
+            context: .
+            dockerfile: docker/Dockerfile-php
+        networks:
+            - staging-spid-cie-php-network
+        restart: unless-stopped
+        volumes:
+            - .:/spid-cie-php
+            - ./public:/var/www
+
+    nginx:
+        build:
+            context: .
+            dockerfile: docker/Dockerfile-nginx
+        ports:
+            - "8020:443"
+        networks:
+            - staging-spid-cie-php-network
+        restart: unless-stopped
+        volumes:
+            - .:/spid-cie-php
+            - ./public:/var/www
+            - ./nginx:/etc/nginx/data
