@@ -15,13 +15,18 @@ nano .env
 ```
 Ed inserire il contenuto
 
+### JSON Config
+Se si ha gia a disposizione un file spid-php-setup.json incollarlo nella root del progetto. 
+Non è obbligatorio, se non lo si mette ci sarà una configurazione a terminale proposta dallo script di installazione
+
+
 ### Build & Run with docker compose
 ```bash
-docker compose -f docker-compose.prod.yml -d --build
+docker compose -f docker-compose.prod.yml up -d --build
 ```
 se invece si tratta di un ambiente di staging:
 ```bash
-docker compose -f docker-compose.staging.yml -d --build
+docker compose -f docker-compose.staging.yml up -d --build
 ```
 
 ### Enter in the container
