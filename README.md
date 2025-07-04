@@ -29,9 +29,9 @@ se invece si tratta di un ambiente di staging:
 docker compose -f docker-compose.staging.yml up -d --build
 ```
 
-### Enter in the container
+### Enter in the php container
 ```bash
-docker exec -it <container> bash
+docker exec -it <container> sh
 ```
 
 ### Initialize first configuration
@@ -42,9 +42,9 @@ E seguire i passaggi mostrati a terminale
 
 
 # Update
-### Enter in the container
+### Enter in the php container
 ```bash
-docker exec -it <container> bash
+docker exec -it <container> sh
 ```
 
 ### Re-Generate files
