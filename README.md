@@ -20,6 +20,10 @@ Se si ha gia a disposizione un file spid-php-setup.json incollarlo nella root de
 Non è obbligatorio, se non lo si mette ci sarà una configurazione a terminale proposta dallo script di installazione
 
 
+### SSL
+Per funzionare lo SPID utilizza NGINX con SSL, inserire quindi dentro la cartella 'nginx/certs' i certificati ssl prima di proseguire.
+
+
 ### Build & Run with docker compose
 ```bash
 docker compose -f docker-compose.prod.yml up -d --build
